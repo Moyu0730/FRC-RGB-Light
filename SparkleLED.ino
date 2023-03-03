@@ -13,8 +13,12 @@ void setup() {
 //  for( int ind = 0 ; ind < NUM_LEDS ; ind++ ) leds[ind] = CRGB::Black;
 }
 
-void loop() {
+void loop() { 
   for(int dot = NUM_LEDS ; dot > 0 ; dot--) {
+    for( int ind = 12 ; ind < 15 ; ind++ ){
+      if( dot-ind < 0 ) break;
+      leds[dot-ind] = CRGB::Red;
+    }
     for( int ind = 6 ; ind < 9 ; ind++ ){
       if( dot-ind < 0 ) break;
       leds[dot-ind] = CRGB::Blue;
@@ -23,11 +27,15 @@ void loop() {
     leds[0] = CRGB::Black;
     delay(50);
     FastLED.show();
+    for( int ind = 12 ; ind < 15 ; ind++ ){
+      if( dot-ind < 0 ) break;
+      leds[dot-ind] = CRGB::Black;
+    }
     for( int ind = 6 ; ind < 9 ; ind++ ){
       if( dot-ind < 0 ) break;
       leds[dot-ind] = CRGB::Black;
     }
     for( int ind = 0 ; ind < 3 ; ind++ ) leds[dot-ind] = CRGB::Black;
-    delay(50);
+    delay(10);
   }
 }
